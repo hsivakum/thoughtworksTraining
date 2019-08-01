@@ -315,3 +315,4 @@ This is
 2. As mentioned previously, all code is unit tested. Maintained in source control with small commits.
 
 3. Avoid having duplications in code or in test. Avoid if conditions as much as possible (If they exist outside of your Parser's or [Factories](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm), question why do they exist). 
+#This is simple text will edit it later

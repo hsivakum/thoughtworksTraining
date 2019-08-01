@@ -3,12 +3,39 @@
  */
 package cumulative.poetry;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PoetTest {
+
+    private Poet poet;
+    @Before
+    public void setUp()
+    {
+        poet = new Poet();
+    }
     @Test public void shouldSaySomething() {
-        Poet poet = new Poet();
-        assertFalse("Poet should say something, but said nothing",poet.recite().isEmpty());
+        assertFalse("This is the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n",poet.recite(6).isEmpty());
+    }
+
+
+    @Test
+    public void testwithArgumetns()
+    {
+        assertEquals("This is the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n",poet.recite(8));
     }
 }
