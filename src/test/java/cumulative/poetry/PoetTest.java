@@ -15,27 +15,804 @@ public class PoetTest {
     {
         poet = new Poet();
     }
-    @Test public void shouldSaySomething() {
-        assertFalse("This is the cow with the crumpled horn that tossed\n" +
+    @Test public void revealForDay() {
+        assertEquals("This is the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n",poet.recite(6,false,false,false));
+    }
+
+
+    @Test
+    public void revealForDayEcho()
+    {
+        assertEquals("This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n",poet.recite(6,true,false,false));
+    }
+
+    @Test
+    public void revealForDayRandom()
+    {
+        Poet.seedVal = 373;
+        assertEquals("Seed Used - 373\n" +
+                "This is the cat that killed\n" +
+                " the rat that ate\n" +
+                " the maiden all forlorn that milked\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the house that Jack built", poet.recite(6,false,true,false));
+    }
+
+    @Test
+    public void revealForDayEchoRandom()
+    {
+        Poet.seedVal = 15;
+        assertEquals("Seed Used - 15\n" +
+                "This is the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n", poet.recite(6,true,true,false));
+    }
+
+    @Test
+    public void revealForDayRandomSeed()
+    {
+        Poet.seedVal = 10;
+        assertEquals("Seed Used - 10\n" +
+                "This is the maiden all forlorn that milked\n" +
+                " the dog that worried\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the cat that killed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the house that Jack built", poet.recite(6,false,true,true));
+    }
+
+    @Test
+    public void revealForDayEchoRandomSeed()
+    {
+        Poet.seedVal =10;
+        assertEquals("Seed Used - 10\n" +
+                "This is the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n",poet.recite(6,true,true,true));
+    }
+
+    @Test
+    public void recite()
+    {
+        assertEquals("Day 1\n" +
+                "This is the house that Jack built\n" +
+                "\n" +
+                "Day 2\n" +
+                "This is the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 3\n" +
+                "This is the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 4\n" +
+                "This is the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 5\n" +
+                "This is the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 6\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
                 " the dog that worried\n" +
                 " the cat that killed\n" +
                 " the rat that ate\n" +
                 " the malth that lay in\n" +
                 " the house that Jack built\n" +
-                "\n",poet.recite(6).isEmpty());
-    }
-
-
-    @Test
-    public void testwithArgumetns()
-    {
-        assertEquals("This is the man all tattered and torn that kissed\n" +
+                "\n" +
+                "Day 7\n" +
+                "This is the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 8\n" +
+                "This is the man all tattered and torn that kissed\n" +
                 " the maiden all forlorn that milked\n" +
                 " the cow with the crumpled horn that tossed\n" +
                 " the dog that worried\n" +
                 " the cat that killed\n" +
                 " the rat that ate\n" +
                 " the malth that lay in\n" +
-                " the house that Jack built\n",poet.recite(8));
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 9\n" +
+                "This is the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 10\n" +
+                "This is the rooster that crowed in the morn that woke\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 11\n" +
+                "This is the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 12\n" +
+                "This is the horse and the hound and the horn that belonged to\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n\n", poet.recite(0,false,false,false));
     }
+
+    @Test
+    public void reciteEcho()
+    {
+        assertEquals("Day 1\n" +
+                "This is the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 2\n" +
+                "This is the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 3\n" +
+                "This is the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 4\n" +
+                "This is the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 5\n" +
+                "This is the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 6\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 7\n" +
+                "This is the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 8\n" +
+                "This is the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 9\n" +
+                "This is the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 10\n" +
+                "This is the rooster that crowed in the morn that woke\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 11\n" +
+                "This is the farmer sowing his corn that kept\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 12\n" +
+                "This is the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n", poet.recite(0,true,false,false));
+    }
+
+
+    @Test
+    public void reciteRandom()
+    {
+        Poet.seedVal = 83;
+        assertEquals("Seed Used - 83\n" +
+                "Day 1\n" +
+                "Seed Used - 83\n" +
+                " the house that Jack built\n" +
+                "Day 2\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the house that Jack built\n" +
+                "Day 3\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the house that Jack built\n" +
+                "Day 4\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the house that Jack built\n" +
+                "Day 5\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the house that Jack built\n" +
+                "Day 6\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the house that Jack built\n" +
+                "Day 7\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the house that Jack built\n" +
+                "Day 8\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "Day 9\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the house that Jack built\n" +
+                "Day 10\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the house that Jack built\n" +
+                "Day 11\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the house that Jack built\n" +
+                "Day 12\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the maiden all forlorn that milked\n" +
+                " the house that Jack built\n",poet.recite(0,false,true,false));
+    }
+
+    @Test
+    public void reciteRandomSeed()
+    {
+        Poet.seedVal = 83;
+        assertEquals("Seed Used - 83\n" +
+                "Day 1\n" +
+                "Seed Used - 83\n" +
+                " the house that Jack built\n" +
+                "Day 2\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the house that Jack built\n" +
+                "Day 3\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the house that Jack built\n" +
+                "Day 4\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the house that Jack built\n" +
+                "Day 5\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the house that Jack built\n" +
+                "Day 6\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the house that Jack built\n" +
+                "Day 7\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the house that Jack built\n" +
+                "Day 8\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                "Day 9\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the house that Jack built\n" +
+                "Day 10\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the house that Jack built\n" +
+                "Day 11\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the house that Jack built\n" +
+                "Day 12\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the maiden all forlorn that milked\n" +
+                " the house that Jack built\n",poet.recite(0,false,true,true));
+    }
+
+    @Test
+    public void reciteEchoRandomSeed()
+    {
+        Poet.seedVal = 83;
+        assertEquals("Seed Used - 83\n" +
+                "Day 1\n" +
+                "Seed Used - 83\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 2\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 3\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 4\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 5\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 6\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 7\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 8\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 9\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 10\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 11\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n" +
+                "Day 12\n" +
+                "Seed Used - 83\n" +
+                "This is the cow with the crumpled horn that tossed\n" +
+                " the cow with the crumpled horn that tossed\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the priest all shaven and shorn that married\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the horse and the hound and the horn that belonged to\n" +
+                " the rat that ate\n" +
+                " the rat that ate\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the man all tattered and torn that kissed\n" +
+                " the dog that worried\n" +
+                " the dog that worried\n" +
+                " the malth that lay in\n" +
+                " the malth that lay in\n" +
+                " the cat that killed\n" +
+                " the cat that killed\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the farmer sowing his corn that kept\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the rooster that crowed in the morn that woke\n" +
+                " the maiden all forlorn that milked\n" +
+                " the maiden all forlorn that milked\n" +
+                " the house that Jack built\n" +
+                " the house that Jack built\n" +
+                "\n",poet.recite(0,true,true,true));
+    }
+
 }
